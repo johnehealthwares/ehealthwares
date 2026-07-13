@@ -8,14 +8,16 @@ import { Partners } from '@/components/sections/Partners';
 import { CTABanner } from '@/components/sections/CTABanner';
 
 export default async function HomePage() {
-  let sections = null, products = null, services = null, testimonials = null, partners = null;
+  let sections = null, products = null, services = null, testimonials = null, partners = null,
+      heroSlides = null;
   try {
-    [sections, products, services, testimonials, partners] = await Promise.all([
+    [sections, products, services, testimonials, partners, heroSlides] = await Promise.all([
       ehealthwaresApi.getSections(),
       ehealthwaresApi.getProducts(),
       ehealthwaresApi.getServices(),
       ehealthwaresApi.getTestimonials(),
       ehealthwaresApi.getPartners(),
+      ehealthwaresApi.getHeroSlides(),
     ]);
   } catch (e) {
     console.error('HomePage data fetch failed:', e);
@@ -26,19 +28,8 @@ export default async function HomePage() {
   const serviceList = services ?? [];
   const testimonialList = testimonials ?? [];
   const partnerList = partners ?? [];
+  const slideList = heroSlides ?? [];
 
-  const heroSection =
-    sectionList.find((s) => s.key === 'hero') ?? {
-      _id: '',
-      key: 'hero',
-      title: 'Pioneering the Future of Connected Healthcare',
-      subtitle:
-        'eHealthwares builds enterprise-grade healthcare technology — pharmacy, lab, radiology and interoperability platforms — so providers can deliver better care, faster.',
-      content: null,
-      imageUrl: null,
-      displayOrder: 0,
-      isActive: true,
-    };
   const ctaSection =
     sectionList.find((s) => s.key === 'cta') ?? {
       _id: '',
@@ -53,7 +44,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero section={heroSection} />
+      <Hero slides={slideList} />
       <StatsBar />
       <ProductsGrid products={productList} />
       <ServicesGrid services={serviceList} />

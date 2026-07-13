@@ -541,6 +541,7 @@ __metadata:
     "@types/react": "npm:^18.3.0"
     "@types/react-dom": "npm:^18.3.0"
     autoprefixer: "npm:^10.4.0"
+    embla-carousel-autoplay: "npm:^8.6.0"
     embla-carousel-react: "npm:^8.6.0"
     next: "npm:^14.2.0"
     postcss: "npm:^8.4.0"
@@ -557,6 +558,15 @@ __metadata:
   version: 1.5.389
   resolution: "electron-to-chromium@npm:1.5.389"
   checksum: 10c0/3681a3245fef5dfc8d9cdee231e80f8fe4fd7a87713d3a29a21ae2ec0cb6995cf14f3b3fd9e3fa8b483256e28ba2fa1daa9f23e93911a3a7241cd8f5daee9665
+  languageName: node
+  linkType: hard
+
+"embla-carousel-autoplay@npm:^8.6.0":
+  version: 8.6.0
+  resolution: "embla-carousel-autoplay@npm:8.6.0"
+  peerDependencies:
+    embla-carousel: 8.6.0
+  checksum: 10c0/d7e5cb79c1474b3d27621302e63dedf783a281ae0464b21b87183d58103f938d22be9f6a4735de4b1b19806606006da43f6151497df91c3edbbc99a4dae4a94f
   languageName: node
   linkType: hard
 
