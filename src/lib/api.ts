@@ -1,7 +1,23 @@
+import type {
+  Article,
+  Career,
+  ContactPayload,
+  HeroSlide,
+  InvestorData,
+  Partner,
+  Product,
+  ProductCategory,
+  Service,
+  SiteSection,
+  SiteSettings,
+  TeamMember,
+  Testimonial,
+} from './types';
+
 const isServer = typeof window === 'undefined';
 const API_BASE = isServer
-  ? (process.env.API_URL || 'http://rxsoft-backend:8080/api')
-  : (process.env.NEXT_PUBLIC_API_URL || '/api/backend');
+  ? (process.env.API_URL || 'http://rxsoft-backend:8080')
+  : (process.env.NEXT_PUBLIC_API_URL || '/api');
 
 export async function apiGet<T>(path: string): Promise<T | null> {
   try {
@@ -26,15 +42,20 @@ export async function apiPost<T>(path: string, body: unknown): Promise<T> {
 const EH_PREFIX = '/api/ehealthwares';
 
 export const ehealthwaresApi = {
-  getSections: () => apiGet<import('./types').SiteSection[]>(`${EH_PREFIX}/sections`),
-  getProducts: () => apiGet<import('./types').Product[]>(`${EH_PREFIX}/products`),
-  getProductBySlug: (slug: string) => apiGet<import('./types').Product>(`${EH_PREFIX}/products/${slug}`),
-  getServices: () => apiGet<import('./types').Service[]>(`${EH_PREFIX}/services`),
-  getServiceBySlug: (slug: string) => apiGet<import('./types').Service>(`${EH_PREFIX}/services/${slug}`),
-  getTestimonials: () => apiGet<import('./types').Testimonial[]>(`${EH_PREFIX}/testimonials`),
-  getPartners: () => apiGet<import('./types').Partner[]>(`${EH_PREFIX}/partners`),
-  getTeam: () => apiGet<import('./types').TeamMember[]>(`${EH_PREFIX}/team`),
-  submitContact: (data: import('./types').ContactPayload) =>
-    apiPost<import('./types').ContactPayload>(`${EH_PREFIX}/contact`, data),
-  getSettings: () => apiGet<import('./types').SiteSettings>(`${EH_PREFIX}/settings`),
+  getSections: () => apiGet<SiteSection[]>(`${EH_PREFIX}/sections`),
+  getProducts: () => apiGet<Product[]>(`${EH_PREFIX}/products`),
+  getProductBySlug: (slug: string) => apiGet<Product>(`${EH_PREFIX}/products/${slug}`),
+  getServices: () => apiGet<Service[]>(`${EH_PREFIX}/services`),
+  getServiceBySlug: (slug: string) => apiGet<Service>(`${EH_PREFIX}/services/${slug}`),
+  getTestimonials: () => apiGet<Testimonial[]>(`${EH_PREFIX}/testimonials`),
+  getPartners: () => apiGet<Partner[]>(`${EH_PREFIX}/partners`),
+  getTeam: () => apiGet<TeamMember[]>(`${EH_PREFIX}/team`),
+  submitContact: (data: ContactPayload) =>
+    apiPost<ContactPayload>(`${EH_PREFIX}/contact`, data),
+  getSettings: () => apiGet<SiteSettings>(`${EH_PREFIX}/settings`),
+  getHeroSlides: () => apiGet<HeroSlide[]>('/api/ehealthwares/hero-slides'),
+  getCategories: () => apiGet<ProductCategory[]>('/api/ehealthwares/categories'),
+  getArticles: () => apiGet<Article[]>('/api/ehealthwares/articles'),
+  getInvestorData: () => apiGet<InvestorData[]>('/api/ehealthwares/investors'),
+  getCareers: () => apiGet<Career[]>('/api/ehealthwares/careers'),
 };

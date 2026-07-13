@@ -114,6 +114,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/carousel@npm:7.17.8":
+  version: 7.17.8
+  resolution: "@mantine/carousel@npm:7.17.8"
+  peerDependencies:
+    "@mantine/core": 7.17.8
+    "@mantine/hooks": 7.17.8
+    embla-carousel-react: ">=7.0.0"
+    react: ^18.x || ^19.x
+    react-dom: ^18.x || ^19.x
+  checksum: 10c0/76b6d207a420bd69648d9850e1f07edca2de78fa80558b48aef4ae3a302cc429923f4dbd47fa698b392699e9ecde9426947c9412b3d8a8a65a6d404af43b6eab
+  languageName: node
+  linkType: hard
+
 "@mantine/core@npm:^7.17.0":
   version: 7.17.8
   resolution: "@mantine/core@npm:7.17.8"
@@ -519,6 +532,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ehealthwares-website@workspace:."
   dependencies:
+    "@mantine/carousel": "npm:7.17.8"
     "@mantine/core": "npm:^7.17.0"
     "@mantine/form": "npm:^7.0.0"
     "@mantine/hooks": "npm:^7.17.0"
@@ -527,6 +541,7 @@ __metadata:
     "@types/react": "npm:^18.3.0"
     "@types/react-dom": "npm:^18.3.0"
     autoprefixer: "npm:^10.4.0"
+    embla-carousel-react: "npm:^8.6.0"
     next: "npm:^14.2.0"
     postcss: "npm:^8.4.0"
     postcss-preset-mantine: "npm:^1.17.0"
@@ -542,6 +557,34 @@ __metadata:
   version: 1.5.389
   resolution: "electron-to-chromium@npm:1.5.389"
   checksum: 10c0/3681a3245fef5dfc8d9cdee231e80f8fe4fd7a87713d3a29a21ae2ec0cb6995cf14f3b3fd9e3fa8b483256e28ba2fa1daa9f23e93911a3a7241cd8f5daee9665
+  languageName: node
+  linkType: hard
+
+"embla-carousel-react@npm:^8.6.0":
+  version: 8.6.0
+  resolution: "embla-carousel-react@npm:8.6.0"
+  dependencies:
+    embla-carousel: "npm:8.6.0"
+    embla-carousel-reactive-utils: "npm:8.6.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.1 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+  checksum: 10c0/461b0c427a6fca62e730c7b39d08e9c55b01a2138c173d5b9ebf77ec92092a900b45ac384731c77382b48d5d65946994d3abba6e9899a66d6e16f8ddf191ed1c
+  languageName: node
+  linkType: hard
+
+"embla-carousel-reactive-utils@npm:8.6.0":
+  version: 8.6.0
+  resolution: "embla-carousel-reactive-utils@npm:8.6.0"
+  peerDependencies:
+    embla-carousel: 8.6.0
+  checksum: 10c0/33d07e6df4d8dec9b4fc95858838ea2d5e5df078039c05b2a342c05ba4979d8d18564a1c607da445fed744daf969a0b5a90124ce487a854e86ced6f0458b51e9
+  languageName: node
+  linkType: hard
+
+"embla-carousel@npm:8.6.0":
+  version: 8.6.0
+  resolution: "embla-carousel@npm:8.6.0"
+  checksum: 10c0/f4c598e7be28b70340d31ffd2bebb2472db370b0c81d9b089bf9555cf618695f35dc4a0694565c994c9ab972731123063f945aa09ff485df0df761d79c6a08ef
   languageName: node
   linkType: hard
 

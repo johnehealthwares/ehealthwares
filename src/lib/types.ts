@@ -72,3 +72,58 @@ export interface ContactPayload {
 export interface SiteSettings {
   [key: string]: unknown;
 }
+
+export interface HeroSlide {
+  _id: string;
+  title: string | null;
+  subtitle: string | null;
+  mediaUrl: string | null;
+  mediaType: 'image' | 'video';
+  ctaText: string | null;
+  ctaLink: string | null;
+  displayOrder: number;
+  isActive: boolean;
+}
+
+export interface ProductCategory {
+  _id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  iconUrl: string | null;
+  imageUrl: string | null;
+  displayOrder: number;
+  isActive: boolean;
+}
+
+export interface Article {
+  _id: string;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  imageUrl: string | null;
+  category: string | null;
+  publishedAt: string | null;
+  isActive: boolean;
+}
+
+export interface InvestorData {
+  _id: string;
+  label: string;
+  value: string;
+  description: string | null;
+  displayOrder: number;
+  isActive: boolean;
+}
+
+export interface Career {
+  _id: string;
+  title: string;
+  slug: string;
+  location: string | null;
+  type: 'full-time' | 'contract' | 'remote';
+  department: string | null;
+  description: string | null;
+  imageUrl: string | null;
+  isActive: boolean;
+}
