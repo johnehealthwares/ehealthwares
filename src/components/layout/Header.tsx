@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Burger, Container, Drawer, Group, Stack, Text, UnstyledButton } from '@mantine/core';
+import { Group, Burger, Drawer, Stack, Image, Anchor, Title, UnstyledButton, Container, Box } from '@mantine/core';
 import Link from 'next/link';
 
 const links = [
@@ -15,23 +15,28 @@ export function Header() {
   const [opened, setOpened] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <Box component="header" className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md" style={{ borderBottom: '1px solid var(--mantine-color-gray-2)' }}>
       <Container size="lg">
         <Group h={64} justify="space-between">
-          <Link href="/" className="no-underline flex items-center gap-2">
-            <img src="/logo.jpg" alt="eHealthwares" className="h-8 w-auto" />
-            <span className="text-lg font-bold text-brand-700">eHealthwares</span>
-          </Link>
+          <UnstyledButton component={Link} href="/" style={{ textDecoration: 'none' }}>
+            <Group gap="sm">
+              <Image src="/logo.jpg" alt="eHealthwares" h={32} w="auto" />
+              <Title order={4} c="brand.7">eHealthwares</Title>
+            </Group>
+          </UnstyledButton>
 
           <Group visibleFrom="sm" gap="lg">
             {links.map((link) => (
-              <Link
+              <Anchor
                 key={link.href}
+                component={Link}
                 href={link.href}
-                className="no-underline text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors"
+                size="sm"
+                c="gray.6"
+                style={{ textDecoration: 'none' }}
               >
                 {link.label}
-              </Link>
+              </Anchor>
             ))}
           </Group>
 
@@ -47,13 +52,12 @@ export function Header() {
               onClick={() => setOpened(false)}
               component={Link}
               href={link.href}
-              className="py-2 text-lg font-medium text-gray-700 hover:text-brand-600"
             >
-              {link.label}
+              <Title order={5} c="gray.7">{link.label}</Title>
             </UnstyledButton>
           ))}
         </Stack>
       </Drawer>
-    </header>
+    </Box>
   );
 }
