@@ -20,10 +20,12 @@ const serviceImages = [
 export default async function ProductsServicesPage() {
   let products: any[] = [], services: any[] = [];
   try {
-    [products, services] = await Promise.all([
+    const result = await Promise.all([
       ehealthwaresApi.getProducts(),
       ehealthwaresApi.getServices(),
     ]);
+    products = result[0] ?? [];
+    services = result[1] ?? [];
   } catch (e) {
     console.error('ProductsServicesPage data fetch failed:', e);
   }
