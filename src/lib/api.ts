@@ -14,17 +14,31 @@ import type {
   Testimonial,
 } from './types';
 
+const CACHE_TTL_SECONDS = Number(process.env.CACHE_TTL_SECONDS)|| 3600
 const isServer = typeof window === 'undefined';
 const API_BASE = isServer
   ? (process.env.API_URL || 'http://rxsoft-backend:8080')
   : (process.env.NEXT_PUBLIC_API_URL || '/api');
 
 export async function apiGet<T>(path: string): Promise<T | null> {
+    const url = `${API_BASE}${path}`;
+
+        console.log('API CALL:', url);
+
   try {
-    const res = await fetch(`${API_BASE}${path}`, { cache: 'no-store' });
+
+    const res = await fetch(`${API_BASE}${path}`, { 
+      next: {
+        revalidate: CACHE_TTL_SECONDS
+      }
+     });
+         console.log('API RESPONSE:', res.status, url);
+
     if (!res.ok) return null;
     return res.json();
-  } catch {
+  } catch(error) {
+             console.log('API RESPONSE:', error, url);
+
     return null;
   }
 }
