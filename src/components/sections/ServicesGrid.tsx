@@ -1,4 +1,4 @@
-import { Card, Container, SimpleGrid, Image, Title, Text, Badge, Box } from '@mantine/core';
+import { Card, Container, SimpleGrid, CardSection, Image, Title, Text, Badge, Box } from '@mantine/core';
 import Link from 'next/link';
 import type { Service } from '@/lib/types';
 
@@ -29,9 +29,9 @@ export function ServicesGrid({ services }: ServicesGridProps) {
               withBorder
               style={{ textDecoration: 'none', transition: 'box-shadow 0.2s' }}
             >
-              <Card.Section>
+              <CardSection>
                 <Image src={service.imageUrl || FALLBACKS[i % FALLBACKS.length]} alt={service.name} h={192} fit="cover" />
-              </Card.Section>
+              </CardSection>
               <Box p="lg">
                 <Title order={4} c="gray.9">{service.name}</Title>
                 {service.tagline && (

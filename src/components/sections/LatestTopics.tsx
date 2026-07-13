@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Card, Image, Title, Text, Anchor, Box } from '@mantine/core';
+import { Container, SimpleGrid, Card, CardSection, Image, Title, Text, Anchor, Box } from '@mantine/core';
 import Link from 'next/link';
 import type { Article } from '@/lib/types';
 
@@ -20,9 +20,9 @@ export function LatestTopics({ articles }: LatestTopicsProps) {
           {articles.slice(0, 6).map((article) => (
             <Card key={article._id} padding={0} radius="md" withBorder>
               {article.imageUrl && (
-                <Card.Section>
+                <CardSection>
                   <Image src={article.imageUrl} alt={article.title} h={180} fit="cover" />
-                </Card.Section>
+                </CardSection>
               )}
               <Box p="md">
                 {article.category && (

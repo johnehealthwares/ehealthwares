@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Card, Image, Title, Text, Box } from '@mantine/core';
+import { Container, SimpleGrid, Card, CardSection, Image, Title, Text, Box } from '@mantine/core';
 import Link from 'next/link';
 import type { ProductCategory } from '@/lib/types';
 
@@ -26,9 +26,9 @@ export function Categories({ categories }: CategoriesProps) {
               radius="md"
               style={{ textDecoration: 'none' }}
             >
-              <Card.Section>
+              <CardSection>
                 <Image src={cat.imageUrl || ''} alt={cat.name} h={160} fit="cover" />
-              </Card.Section>
+              </CardSection>
               <Box p="md">
                 <Title order={4} c="gray.9">{cat.name}</Title>
                 {cat.description && (

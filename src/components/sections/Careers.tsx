@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Card, Image, Title, Text, Badge, Button, Box, Group } from '@mantine/core';
+import { Container, SimpleGrid, Card, CardSection, Image, Title, Text, Badge, Button, Box, Group } from '@mantine/core';
 import Link from 'next/link';
 import type { Career } from '@/lib/types';
 
@@ -20,9 +20,9 @@ export function Careers({ careers }: CareersProps) {
           {careers.map((c) => (
             <Card key={c._id} padding={0} radius="md" withBorder>
               {c.imageUrl && (
-                <Card.Section>
+                <CardSection>
                   <Image src={c.imageUrl} alt={c.title} h={160} fit="cover" />
-                </Card.Section>
+                </CardSection>
               )}
               <Box p="md">
                 <Title order={4}>{c.title}</Title>
