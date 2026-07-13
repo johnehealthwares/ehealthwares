@@ -45,15 +45,16 @@ export default async function ProductsServicesPage() {
             <Title order={2} mb="md">Products</Title>
             <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
               {(products ?? []).map((p: any, i: number) => (
-                <Card
-                  key={p._id}
-                  component={Link}
-                  href={`/products/${p.slug}`}
-                  padding={0}
-                  radius="md"
-                  withBorder
-                  style={{ textDecoration: 'none', transition: 'box-shadow 0.2s' }}
-                >
+                  <Card
+                    key={p._id}
+                    component={Link}
+                    href={`/products/${p.slug}`}
+                    padding={0}
+                    radius="md"
+                    withBorder
+                    className="card-brand"
+                    style={{ textDecoration: 'none' }}
+                  >
                   <CardSection>
                     <Image src={p.imageUrl || productImages[i % productImages.length]} alt={p.name} h={180} fit="cover" />
                   </CardSection>
@@ -86,7 +87,8 @@ export default async function ProductsServicesPage() {
                   padding={0}
                   radius="md"
                   withBorder
-                  style={{ textDecoration: 'none', transition: 'box-shadow 0.2s' }}
+                  className="card-brand"
+                  style={{ textDecoration: 'none' }}
                 >
                   <CardSection>
                     <Image src={s.imageUrl || serviceImages[i % serviceImages.length]} alt={s.name} h={180} fit="cover" />

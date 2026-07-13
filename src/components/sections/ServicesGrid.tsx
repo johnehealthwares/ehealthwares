@@ -27,7 +27,8 @@ export function ServicesGrid({ services }: ServicesGridProps) {
               padding={0}
               radius="lg"
               withBorder
-              style={{ textDecoration: 'none', transition: 'box-shadow 0.2s' }}
+              className="card-brand"
+              style={{ textDecoration: 'none' }}
             >
               <CardSection>
                 <Image src={service.imageUrl || FALLBACKS[i % FALLBACKS.length]} alt={service.name} h={192} fit="cover" />

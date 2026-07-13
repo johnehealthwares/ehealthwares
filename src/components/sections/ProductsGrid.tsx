@@ -30,7 +30,8 @@ export function ProductsGrid({ products }: ProductsGridProps) {
               padding={0}
               radius="lg"
               withBorder
-              style={{ textDecoration: 'none', transition: 'box-shadow 0.2s' }}
+              className="card-brand"
+              style={{ textDecoration: 'none' }}
             >
               <CardSection>
                 <Image

@@ -24,6 +24,7 @@ export function Categories({ categories }: CategoriesProps) {
               href={`/products/${cat.slug}`}
               padding={0}
               radius="md"
+              className="card-brand"
               style={{ textDecoration: 'none' }}
             >
               <CardSection>

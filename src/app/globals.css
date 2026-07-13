@@ -2,14 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   body {
     @apply font-body text-gray-900 antialiased;
+    background-color: #f2f5f2;
   }
 
   h1, h2, h3, h4 {
     @apply font-display;
   }
+}
+
+.card-brand {
+  border-top: 3px solid #059669 !important;
+  transition: box-shadow 0.2s ease;
+}
+.card-brand:hover {
+  box-shadow: 0 4px 20px rgba(5, 150, 105, 0.1);
 }

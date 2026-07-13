@@ -21,7 +21,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
         <Carousel slideSize="33.333%" slideGap="md" loop withControls withIndicators>
           {testimonials.map((t) => (
             <Carousel.Slide key={t._id}>
-              <Card padding="lg" radius="md" withBorder style={{ height: '100%' }}>
+              <Card padding="lg" radius="md" withBorder className="card-brand" style={{ height: '100%' }}>
                 <Text size="sm" c="gray.7" fs="italic" lh={1.6}>
                   &ldquo;{t.text}&rdquo;
                 </Text>

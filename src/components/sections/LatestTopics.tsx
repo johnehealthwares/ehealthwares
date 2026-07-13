@@ -18,7 +18,7 @@ export function LatestTopics({ articles }: LatestTopicsProps) {
         </Box>
         <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
           {articles.slice(0, 6).map((article) => (
-            <Card key={article._id} padding={0} radius="md" withBorder>
+            <Card key={article._id} padding={0} radius="md" withBorder className="card-brand">
               {article.imageUrl && (
                 <CardSection>
                   <Image src={article.imageUrl} alt={article.title} h={180} fit="cover" />

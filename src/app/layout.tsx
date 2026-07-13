@@ -1,5 +1,6 @@
 import '@mantine/core/styles.css';
 import './globals.css';
+import '@mantine/carousel/styles.css';
 import { ColorSchemeScript, MantineProvider, createTheme } from '@mantine/core';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';

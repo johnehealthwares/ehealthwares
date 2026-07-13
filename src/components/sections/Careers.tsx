@@ -18,7 +18,7 @@ export function Careers({ careers }: CareersProps) {
         </Box>
         <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
           {careers.map((c) => (
-            <Card key={c._id} padding={0} radius="md" withBorder>
+            <Card key={c._id} padding={0} radius="md" withBorder className="card-brand">
               {c.imageUrl && (
                 <CardSection>
                   <Image src={c.imageUrl} alt={c.title} h={160} fit="cover" />

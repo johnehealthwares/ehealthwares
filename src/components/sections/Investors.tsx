@@ -17,7 +17,7 @@ export function Investors({ data }: InvestorsProps) {
         </Box>
         <SimpleGrid cols={{ base: 1, sm: 2, lg: 5 }} spacing="lg">
           {data.map((d) => (
-            <Paper key={d._id} p="xl" radius="md" withBorder ta="center">
+            <Paper key={d._id} p="xl" radius="md" withBorder ta="center" className="card-brand">
               <Title order={1} c="brand.6" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
                 {d.value}
               </Title>
