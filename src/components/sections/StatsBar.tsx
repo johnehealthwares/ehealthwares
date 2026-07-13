@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Text, Title } from '@mantine/core';
+import { Container, SimpleGrid, Paper, Title, Text, Box } from '@mantine/core';
 
 const stats = [
   { value: '10+', label: 'Years Experience' },
@@ -9,21 +9,19 @@ const stats = [
 
 export function StatsBar() {
   return (
-    <section className="py-16 bg-white">
+    <Box component="section" py={64}>
       <Container size="lg">
         <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <Title order={2} className="text-4xl md:text-5xl font-display text-brand-600 mb-1">
+            <Paper key={stat.label} ta="center" p="md" bg="transparent">
+              <Title order={2} c="brand.6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
                 {stat.value}
               </Title>
-              <Text size="sm" className="text-gray-500 uppercase tracking-wider">
-                {stat.label}
-              </Text>
-            </div>
+              <Text size="sm" c="gray.5" tt="uppercase">{stat.label}</Text>
+            </Paper>
           ))}
         </SimpleGrid>
       </Container>
-    </section>
+    </Box>
   );
 }
