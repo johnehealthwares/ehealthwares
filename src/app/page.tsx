@@ -1,6 +1,5 @@
 import { ehealthwaresApi } from '@/lib/api';
 import { Hero } from '@/components/sections/Hero';
-import { StatsBar } from '@/components/sections/StatsBar';
 import { Categories } from '@/components/sections/Categories';
 import { ProductsGrid } from '@/components/sections/ProductsGrid';
 import { ServicesGrid } from '@/components/sections/ServicesGrid';
@@ -9,6 +8,8 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { Partners } from '@/components/sections/Partners';
 import { Investors } from '@/components/sections/Investors';
 import { Careers } from '@/components/sections/Careers';
+import { StatsBar } from '@/components/sections/StatsBar';
+import { Box } from '@mantine/core';
 import { CTABanner } from '@/components/sections/CTABanner';
 
 export default async function HomePage() {
@@ -46,21 +47,16 @@ export default async function HomePage() {
 
   const ctaSection =
     sectionList.find((s) => s.key === 'cta') ?? {
-      _id: '',
-      key: 'cta',
+      _id: '', key: 'cta',
       title: 'Ready to transform your healthcare technology?',
       subtitle: 'Talk to our solutions team about RxSoft and our interoperability services.',
-      content: null,
-      imageUrl: null,
-      displayOrder: 0,
-      isActive: true,
+      content: null, imageUrl: null, displayOrder: 0, isActive: true,
     };
 
   return (
     <>
       <Hero slides={slideList} />
-      <StatsBar />
-      <Categories categories={categoryList} />
+      <Box id="categories"><Categories categories={categoryList} /></Box>
       <ProductsGrid products={productList} />
       <ServicesGrid services={serviceList} />
       <LatestTopics articles={articleList} />
@@ -68,6 +64,7 @@ export default async function HomePage() {
       <Partners partners={partnerList} />
       <Investors data={investorList} />
       <Careers careers={careerList} />
+      <StatsBar />
       <CTABanner section={ctaSection} />
     </>
   );
