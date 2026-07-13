@@ -1,6 +1,7 @@
 node_modules/
 .next/
 out/
-assets/
+/assets/
 temporary_screenshots/
 tsconfig.tsbuildinfo
+
