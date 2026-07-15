@@ -53,7 +53,7 @@ export async function apiPost<T>(path: string, body: unknown): Promise<T> {
   return res.json();
 }
 
-const EH_PREFIX = '/api/ehealthwares';
+const EH_PREFIX = '';
 
 export const ehealthwaresApi = {
   getSections: () => apiGet<SiteSection[]>(`${EH_PREFIX}/sections`),
