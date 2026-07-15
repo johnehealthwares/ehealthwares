@@ -53,23 +53,21 @@ export async function apiPost<T>(path: string, body: unknown): Promise<T> {
   return res.json();
 }
 
-const EH_PREFIX = '';
-
 export const ehealthwaresApi = {
-  getSections: () => apiGet<SiteSection[]>(`${EH_PREFIX}/sections`),
-  getProducts: () => apiGet<Product[]>(`${EH_PREFIX}/products`),
-  getProductBySlug: (slug: string) => apiGet<Product>(`${EH_PREFIX}/products/${slug}`),
-  getServices: () => apiGet<Service[]>(`${EH_PREFIX}/services`),
-  getServiceBySlug: (slug: string) => apiGet<Service>(`${EH_PREFIX}/services/${slug}`),
-  getTestimonials: () => apiGet<Testimonial[]>(`${EH_PREFIX}/testimonials`),
-  getPartners: () => apiGet<Partner[]>(`${EH_PREFIX}/partners`),
-  getTeam: () => apiGet<TeamMember[]>(`${EH_PREFIX}/team`),
+  getSections: () => apiGet<SiteSection[]>(`/sections`),
+  getProducts: () => apiGet<Product[]>(`/products`),
+  getProductBySlug: (slug: string) => apiGet<Product>(`/products/${slug}`),
+  getServices: () => apiGet<Service[]>(`/services`),
+  getServiceBySlug: (slug: string) => apiGet<Service>(`/services/${slug}`),
+  getTestimonials: () => apiGet<Testimonial[]>(`/testimonials`),
+  getPartners: () => apiGet<Partner[]>(`/partners`),
+  getTeam: () => apiGet<TeamMember[]>(`/team`),
   submitContact: (data: ContactPayload) =>
-    apiPost<ContactPayload>(`${EH_PREFIX}/contact`, data),
-  getSettings: () => apiGet<SiteSettings>(`${EH_PREFIX}/settings`),
-  getHeroSlides: () => apiGet<HeroSlide[]>('/api/ehealthwares/hero-slides'),
-  getCategories: () => apiGet<ProductCategory[]>('/api/ehealthwares/categories'),
-  getArticles: () => apiGet<Article[]>('/api/ehealthwares/articles'),
-  getInvestorData: () => apiGet<InvestorData[]>('/api/ehealthwares/investors'),
-  getCareers: () => apiGet<Career[]>('/api/ehealthwares/careers'),
+    apiPost<ContactPayload>(`/contact`, data),
+  getSettings: () => apiGet<SiteSettings>(`/settings`),
+  getHeroSlides: () => apiGet<HeroSlide[]>(`/hero-slides`),
+  getCategories: () => apiGet<ProductCategory[]>(`categories`),
+  getArticles: () => apiGet<Article[]>(`articles`),
+  getInvestorData: () => apiGet<InvestorData[]>('investors'),
+  getCareers: () => apiGet<Career[]>('/careers'),
 };
