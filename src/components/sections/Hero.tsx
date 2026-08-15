@@ -1,115 +1,128 @@
 'use client';
 
 import { Carousel } from '@mantine/carousel';
-import { Container, Title, Text, Button, Overlay, Box, Group, ActionIcon } from '@mantine/core';
-import Link from 'next/link';
 import Autoplay from 'embla-carousel-autoplay';
 import { useRef } from 'react';
+import Link from 'next/link';
+import { IconArrowRight, IconChevronDown, IconSparkles } from '@tabler/icons-react';
 import type { HeroSlide } from '@/lib/types';
+import { SiteImage } from '@/components/shared';
 
 interface HeroProps {
   slides: HeroSlide[];
   interval?: number;
 }
 
-export function Hero({ slides, interval = 5000 }: HeroProps) {
+export function Hero({ slides, interval = 6000 }: HeroProps) {
   const autoplay = useRef(Autoplay({ delay: interval, stopOnInteraction: false }));
 
   if (!slides?.length) return null;
 
   return (
-    <Box component="section" style={{ position: 'relative' }}>
+    <section className="relative">
       <Carousel
         withIndicators
         withControls
-        height="70vh"
+        height="88vh"
         loop
         plugins={[autoplay.current]}
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={autoplay.current.reset}
         styles={{
           control: {
-            background: 'rgba(255,255,255,0.9)',
-            border: 'none',
-            width: 48,
-            height: 48,
-            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+            background: 'rgba(255,255,255,0.14)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255,255,255,0.25)',
+            color: '#fff',
+            width: 46,
+            height: 46,
           },
+          controls: { paddingInline: 20 },
           indicator: {
-            width: 10,
-            height: 10,
-            borderRadius: '50%',
+            width: 28,
+            height: 4,
+            borderRadius: 999,
+            background: 'rgba(255,255,255,0.35)',
+            transition: 'all 0.3s ease',
           },
+          indicators: { bottom: 28 },
         }}
       >
         {slides.map((slide) => (
           <Carousel.Slide key={slide._id}>
-            <Box style={{ position: 'relative', height: '70vh', width: '100%', overflow: 'hidden' }}>
+            <div className="relative h-[88vh] w-full overflow-hidden bg-navy-900">
               {slide.mediaType === 'video' ? (
-                <Box
-                  component="video"
+                <video
                   src={slide.mediaUrl ?? ''}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  className="h-full w-full object-cover"
                 />
               ) : (
-                <Box
-                  style={{
-                    width: '100%', height: '100%',
-                    backgroundImage: slide.mediaUrl ? `url(${slide.mediaUrl})` : 'none',
-                    backgroundSize: 'cover', backgroundPosition: 'center',
-                  }}
+                <SiteImage
+                  src={slide.mediaUrl ?? ''}
+                  alt={slide.title ?? 'eHealthwares hero image'}
+                  priority
+                  sizes="100vw"
                 />
               )}
-              <Overlay gradient="linear-gradient(135deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 100%)" zIndex={1} />
-              <Container
-                size="lg"
-                style={{
-                  position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2,
-                  display: 'flex', alignItems: 'center',
-                }}
-              >
-                <Box maw={640}>
-                  {slide.title && (
-                    <Title order={1} c="white" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
-                      {slide.title}
-                    </Title>
-                  )}
-                  {slide.subtitle && (
-                    <Text size="lg" c="gray.3" mt="md" style={{ maxWidth: 520 }}>
-                      {slide.subtitle}
-                    </Text>
-                  )}
-                  {slide.ctaText && slide.ctaLink && (
-                    <Group mt="xl">
-                      <Button component={Link} href={slide.ctaLink} size="lg" variant="filled" color="brand">
-                        {slide.ctaText}
-                      </Button>
-                    </Group>
-                  )}
-                </Box>
-              </Container>
-            </Box>
+
+              {/* Layered gradients for legibility + vibrancy */}
+              <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-900/70 to-navy-900/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-navy-950/30" />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_70%_20%,rgba(124,58,237,0.18),transparent_70%)]" />
+
+              <div className="absolute inset-0 flex items-center">
+                <div className="mx-auto w-full max-w-7xl px-6">
+                  <div className="max-w-2xl">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-white/90 backdrop-blur-md">
+                      <IconSparkles size={13} className="text-amber-300" />
+                      eHealthWares Ecosystem
+                    </span>
+
+                    {slide.title && (
+                      <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.06] tracking-[-0.025em] text-white sm:text-5xl lg:text-6xl">
+                        {slide.title}
+                      </h1>
+                    )}
+
+                    {slide.subtitle && (
+                      <p className="mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+                        {slide.subtitle}
+                      </p>
+                    )}
+
+                    {slide.ctaText && slide.ctaLink && (
+                      <div className="mt-9 flex flex-wrap items-center gap-4">
+                        <Link href={slide.ctaLink} className="btn-gradient !px-7 !py-3.5 text-base">
+                          {slide.ctaText}
+                          <IconArrowRight size={18} />
+                        </Link>
+                        <Link
+                          href="/products-services"
+                          className="btn-ghost-light !px-7 !py-3.5 text-base"
+                        >
+                          Explore Solutions
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
           </Carousel.Slide>
         ))}
       </Carousel>
 
-      <Box style={{ position: 'absolute', bottom: 24, left: 0, right: 0, zIndex: 3, textAlign: 'center' }}>
-        <ActionIcon
-          component="a"
-          href="#categories"
-          variant="transparent"
-          size="lg"
-          style={{ color: 'white', opacity: 0.8, cursor: 'pointer' }}
-        >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </ActionIcon>
-      </Box>
-    </Box>
+      <a
+        href="#categories"
+        className="absolute bottom-14 left-1/2 z-10 -translate-x-1/2 text-white/70 transition-colors hover:text-white"
+        aria-label="Scroll to solutions"
+      >
+        <IconChevronDown size={30} className="animate-bounce" />
+      </a>
+    </section>
   );
 }

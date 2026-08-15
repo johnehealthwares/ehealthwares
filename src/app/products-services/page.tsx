@@ -1,21 +1,18 @@
-import { Container, Title, Text, SimpleGrid, Card, CardSection, Image, Badge, Group, Box } from '@mantine/core';
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import { IconArrowRight } from '@tabler/icons-react';
 import { ehealthwaresApi } from '@/lib/api';
+import { AccentTile, SectionHeader, SiteImage, getAccent, PRODUCT_ACCENTS, SERVICE_ACCENTS } from '@/components/shared';
 
-const productImages = [
-  '/assets/pexels-shvetsa-4225925.jpg',
-  '/assets/pexels-mart-production-7089011.jpg',
-  '/assets/pexels-tima-miroshnichenko-6234976.jpg',
-  '/assets/pexels-daliladalprat-5875565.jpg',
-  '/assets/pexels-tima-miroshnichenko-6234978.jpg',
-];
+export const metadata: Metadata = {
+  title: 'Products & Services — Healthcare Technology Solutions',
+  description:
+    'Explore eHealthwares products and services: PrognoCare EMR, RxSoft pharmacy management, laboratory information systems, radiology systems, telemedicine, healthcare interoperability, and digital transformation services.',
+  alternates: { canonical: '/products-services' },
+};
 
-const serviceImages = [
-  '/images/img1.jpg',
-  '/images/img8.jpg',
-  '/images/img9.jpg',
-  '/images/img2.jpg',
-];
+const DEFAULT_IMAGE =
+  'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80';
 
 export default async function ProductsServicesPage() {
   let products: any[] = [], services: any[] = [];
@@ -31,83 +28,91 @@ export default async function ProductsServicesPage() {
   }
 
   return (
-    <Box pt={96} pb={80}>
-      <Container size="lg">
-        <Box ta="center" mb="xl" maw={640} mx="auto">
-          <Title order={1} style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-            Products & Services
-          </Title>
-          <Text c="gray.6" mt="sm" size="lg">
-            Enterprise healthcare technology platforms and expert services designed to transform healthcare operations
-          </Text>
-        </Box>
+    <div className="relative overflow-hidden bg-hero-gradient">
+      <div className="pointer-events-none absolute inset-0 hex-pattern opacity-50" />
+
+      <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-36 sm:pt-40">
+        <SectionHeader
+          chip="What We Build"
+          title={
+            <>
+              Products & <span className="text-gradient">Services</span>
+            </>
+          }
+          subtitle="Enterprise healthcare technology platforms and expert services designed to transform operations — from the pharmacy counter to the radiology suite."
+        />
 
         {products.length > 0 && (
-          <Box mb={64}>
-            <Title order={2} mb="md">Products</Title>
-            <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
-              {(products ?? []).map((p: any, i: number) => (
-                  <Card
+          <div className="mt-4">
+            <h2 className="mb-6 font-display text-2xl font-extrabold text-navy-900">Products</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {products.map((p: any) => {
+                const accent = getAccent(p.slug, PRODUCT_ACCENTS);
+                return (
+                  <Link
                     key={p._id}
-                    component={Link}
                     href={`/products/${p.slug}`}
-                    padding={0}
-                    radius="md"
-                    withBorder
-                    className="card-brand"
-                    style={{ textDecoration: 'none' }}
+                    className="bento-card group flex flex-col"
                   >
-                  <CardSection>
-                    <Image src={p.imageUrl || productImages[i % productImages.length]} alt={p.name} h={180} fit="cover" />
-                  </CardSection>
-                  <Box p="md">
-                    <Title order={4} c="dark">{p.name}</Title>
-                    {p.tagline && <Text size="sm" c="gray.6" mt={4}>{p.tagline}</Text>}
-                    {p.features?.length > 0 && (
-                      <Group gap={4} mt="sm">
-                        {p.features.slice(0, 3).map((f: string) => (
-                          <Badge key={f} variant="light" color="brand" size="sm">{f}</Badge>
-                        ))}
-                      </Group>
-                    )}
-                  </Box>
-                </Card>
-              ))}
-            </SimpleGrid>
-          </Box>
+                    <div className="relative h-44 w-full overflow-hidden">
+                      <SiteImage
+                        src={p.imageUrl || DEFAULT_IMAGE}
+                        alt={p.name}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, transparent 40%, ${accent.to}33 100%)` }} />
+                      <div className="absolute bottom-3 left-4">
+                        <AccentTile accent={accent} size={48} />
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col p-6">
+                      <h3 className="font-display text-lg font-bold text-navy-900 transition-colors group-hover:text-blue-600">
+                        {p.name}
+                      </h3>
+                      {p.tagline && <p className="mt-1.5 text-sm leading-relaxed text-navy-500">{p.tagline}</p>}
+                      <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-bold text-blue-600">
+                        Explore
+                        <IconArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         )}
 
         {services.length > 0 && (
-          <Box>
-            <Title order={2} mb="md">Services</Title>
-            <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
-              {(services ?? []).map((s: any, i: number) => (
-                <Card
-                  key={s._id}
-                  component={Link}
-                  href={`/services/${s.slug}`}
-                  padding={0}
-                  radius="md"
-                  withBorder
-                  className="card-brand"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <CardSection>
-                    <Image src={s.imageUrl || serviceImages[i % serviceImages.length]} alt={s.name} h={180} fit="cover" />
-                  </CardSection>
-                  <Box p="md">
-                    <Title order={4} c="dark">{s.name}</Title>
-                    {s.tagline && <Text size="sm" c="gray.6" mt={4}>{s.tagline}</Text>}
-                    {s.description && (
-                      <Text size="xs" c="gray.5" mt={4} lineClamp={2}>{s.description.replace(/<[^>]+>/g, '')}</Text>
-                    )}
-                  </Box>
-                </Card>
-              ))}
-            </SimpleGrid>
-          </Box>
+          <div className="mt-20">
+            <h2 className="mb-6 font-display text-2xl font-extrabold text-navy-900">Services</h2>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {services.map((s: any) => {
+                const accent = getAccent(s.slug, SERVICE_ACCENTS);
+                return (
+                  <Link
+                    key={s._id}
+                    href={`/services/${s.slug}`}
+                    className="glass-card group flex items-start gap-5 rounded-2xl p-7"
+                  >
+                    <AccentTile accent={accent} size={54} />
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-navy-900 transition-colors group-hover:text-blue-600">
+                        {s.name}
+                      </h3>
+                      {s.tagline && <p className="mt-1.5 text-sm leading-relaxed text-navy-500">{s.tagline}</p>}
+                      <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-blue-600">
+                        Learn more
+                        <IconArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         )}
-      </Container>
-    </Box>
+      </div>
+    </div>
   );
 }

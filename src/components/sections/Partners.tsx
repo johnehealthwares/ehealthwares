@@ -1,5 +1,5 @@
-import { Container, Group, Paper, Image, Title, Text, Box } from '@mantine/core';
 import type { Partner } from '@/lib/types';
+import { SectionHeader } from '@/components/shared';
 
 interface PartnersProps {
   partners: Partner[];
@@ -8,22 +8,36 @@ interface PartnersProps {
 export function Partners({ partners }: PartnersProps) {
   if (!partners?.length) return null;
 
+  const doubled = [...partners, ...partners];
+
   return (
-    <Box component="section" py={64} style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
-      <Container size="lg">
-        <Title order={3} ta="center" mb="lg">Strategic Partnerships</Title>
-        <Group justify="center" gap="lg">
-          {partners.map((p) => (
-            <Paper key={p._id} p="md" withBorder radius="md" style={{ minWidth: 140, textAlign: 'center' }}>
-              {p.logoUrl ? (
-                <Image src={p.logoUrl} alt={p.name} h={40} fit="contain" />
-              ) : (
-                <Text fw={600} c="gray.7">{p.name}</Text>
-              )}
-            </Paper>
+    <section className="relative overflow-hidden py-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          chip="Strategic Partnerships"
+          title={
+            <>
+              Growing the <span className="text-gradient">connected ecosystem</span>
+            </>
+          }
+          subtitle="We partner with EMR vendors, labs, pharmacies, and technology teams to extend digital care beyond the core record."
+        />
+      </div>
+
+      <div className="relative mt-2 overflow-hidden" aria-hidden="true">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-[#f7f9fd] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-[#f7f9fd] to-transparent" />
+        <div className="marquee-track gap-5 px-5">
+          {doubled.map((p, i) => (
+            <div
+              key={`${p._id}-${i}`}
+              className="glass flex h-20 w-64 shrink-0 items-center justify-center rounded-2xl px-6"
+            >
+              <span className="font-display text-base font-bold text-navy-700">{p.name}</span>
+            </div>
           ))}
-        </Group>
-      </Container>
-    </Box>
+        </div>
+      </div>
+    </section>
   );
 }

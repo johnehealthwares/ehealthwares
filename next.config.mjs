@@ -2,13 +2,17 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
-  async rewrites() {
-    return [
+  images: {
+    remotePatterns: [
       {
-        source: '/:path*',
-        destination: process.env.API_URL ? `${process.env.API_URL}/ehealthwares/:path*` : 'http://api.ehealthwares.com/ehealthwares/:path*',
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
       },
-    ];
+      {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      },
+    ],
   },
 };
 

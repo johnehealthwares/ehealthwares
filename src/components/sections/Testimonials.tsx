@@ -1,48 +1,82 @@
 'use client';
 
 import { Carousel } from '@mantine/carousel';
-import { Container, Card, Avatar, Title, Text, Box } from '@mantine/core';
+import { IconQuote } from '@tabler/icons-react';
 import type { Testimonial } from '@/lib/types';
+import { SectionHeader } from '@/components/shared';
 
 interface TestimonialsProps {
   testimonials: Testimonial[];
 }
 
+const AVATAR_GRADIENTS = [
+  'linear-gradient(135deg, #2563EB, #7C3AED)',
+  'linear-gradient(135deg, #0D9488, #16A34A)',
+  'linear-gradient(135deg, #F43F5E, #F59E0B)',
+];
+
 export function Testimonials({ testimonials }: TestimonialsProps) {
   if (!testimonials?.length) return null;
 
   return (
-    <Box component="section" py={80} style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
-      <Container size="lg">
-        <Box ta="center" mb="xl">
-          <Title order={2}>What Our Clients Say</Title>
-          <Text c="gray.6" mt="sm">Trusted by healthcare organizations across Africa</Text>
-        </Box>
-        <Carousel slideSize="33.333%" slideGap="md" loop withControls withIndicators>
-          {testimonials.map((t) => (
+    <section className="relative overflow-hidden bg-section-gradient py-24">
+      <div className="pointer-events-none absolute inset-0 dots-pattern opacity-60" />
+      <div className="relative mx-auto max-w-7xl px-6">
+        <SectionHeader
+          chip="Testimonials"
+          title={
+            <>
+              Trusted by <span className="text-gradient">healthcare leaders</span>
+            </>
+          }
+          subtitle="Hear from the clinicians, administrators, and partners building with eHealthwares every day."
+        />
+
+        <Carousel
+          slideSize={{ base: '100%', sm: '50%', lg: '33.333%' }}
+          slideGap="lg"
+          loop
+          withControls
+          withIndicators
+          styles={{
+            control: {
+              background: 'white',
+              border: '1px solid rgba(15,42,67,0.1)',
+              color: '#0F2A43',
+              width: 42,
+              height: 42,
+              boxShadow: '0 8px 24px -8px rgba(15,42,67,0.25)',
+            },
+            indicator: { width: 8, height: 8, background: 'rgba(15,42,67,0.2)' },
+            indicators: { bottom: -36 },
+          }}
+        >
+          {testimonials.map((t, i) => (
             <Carousel.Slide key={t._id}>
-              <Card padding="lg" radius="md" withBorder className="card-brand" style={{ height: '100%' }}>
-                <Text size="sm" c="gray.7" fs="italic" lh={1.6}>
+              <figure className="glass-card relative flex h-full flex-col rounded-2xl p-7">
+                <IconQuote size={36} className="text-blue-200" fill="currentColor" stroke={1.5} />
+                <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed text-navy-700">
                   &ldquo;{t.text}&rdquo;
-                </Text>
-                <Box mt="md" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <Avatar color="brand" radius="xl" size="md">
+                </blockquote>
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-navy-100 pt-5">
+                  <span
+                    className="flex h-11 w-11 items-center justify-center rounded-full font-display text-base font-bold text-white"
+                    style={{ background: AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length] }}
+                  >
                     {t.name.charAt(0)}
-                  </Avatar>
-                  <Box>
-                    <Text fw={600} size="sm">{t.name}</Text>
-                    {(t.role || t.company) && (
-                      <Text size="xs" c="gray.5">
-                        {[t.role, t.company].filter(Boolean).join(', ')}
-                      </Text>
-                    )}
-                  </Box>
-                </Box>
-              </Card>
+                  </span>
+                  <span>
+                    <span className="block text-sm font-bold text-navy-900">{t.name}</span>
+                    <span className="block text-xs text-navy-400">
+                      {[t.role, t.company].filter(Boolean).join(' · ')}
+                    </span>
+                  </span>
+                </figcaption>
+              </figure>
             </Carousel.Slide>
           ))}
         </Carousel>
-      </Container>
-    </Box>
+      </div>
+    </section>
   );
 }
