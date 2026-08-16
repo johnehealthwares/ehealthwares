@@ -1,9 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { IconArrowRight, IconMenu2, IconX } from '@tabler/icons-react';
+import { AUTH_CHANGE_EVENT, getCurrentUser } from '@/lib/auth';
+import { UserMenu } from './UserMenu';
+
+function AuthButton() {
+  const [authed, setAuthed] = useState(!!getCurrentUser());
+
+  useEffect(() => {
+    const sync = () => setAuthed(!!getCurrentUser());
+    sync();
+    window.addEventListener(AUTH_CHANGE_EVENT, sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener(AUTH_CHANGE_EVENT, sync);
+      window.removeEventListener('storage', sync);
+    };
+  }, []);
+
+  if (authed) return <UserMenu />;
+  return (
+    <Link
+      href="/sign-in"
+      className="rounded-xl px-4 py-2 text-sm font-semibold text-navy-700 transition-colors hover:bg-navy-50 hover:text-blue-600"
+    >
+      Sign In
+    </Link>
+  );
+}
 
 const links = [
   { label: 'Products & Services', href: '/products-services' },
@@ -80,12 +107,7 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-2.5 md:flex">
-            <Link
-              href="/sign-in"
-              className="rounded-xl px-4 py-2 text-sm font-semibold text-navy-700 transition-colors hover:bg-navy-50 hover:text-blue-600"
-            >
-              Sign In
-            </Link>
+            <AuthButton />
             <Link href="/contact" className="btn-gradient !px-5 !py-2.5">
               Get in Touch
               <IconArrowRight size={16} />
@@ -120,13 +142,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="mt-3 flex flex-col gap-2 border-t border-navy-100 pt-4">
-                <Link
-                  href="/sign-in"
-                  onClick={() => setOpened(false)}
-                  className="rounded-xl border border-navy-200 px-4 py-2.5 text-center text-sm font-semibold text-navy-800"
-                >
-                  Sign In
-                </Link>
+                <AuthButton />
                 <Link href="/contact" onClick={() => setOpened(false)} className="btn-gradient">
                   Get in Touch
                   <IconArrowRight size={16} />

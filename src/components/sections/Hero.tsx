@@ -27,7 +27,7 @@ export function Hero({ slides, interval = 6000 }: HeroProps) {
         loop
         plugins={[autoplay.current]}
         onMouseEnter={autoplay.current.stop}
-        onMouseLeave={autoplay.current.reset}
+        onMouseLeave={() => autoplay.current.play()}
         styles={{
           control: {
             background: 'rgba(255,255,255,0.14)',

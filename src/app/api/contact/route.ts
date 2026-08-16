@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const API_BASE = process.env.API_URL || 'http://api.ehealthwares.com/ehealthwares';
+const API_BASE = process.env.API_URL || 'https://api.ehealthwares.com/ehealthwares';
 
 /**
  * Client-side contact submissions are POSTed here (same-origin) and proxied
