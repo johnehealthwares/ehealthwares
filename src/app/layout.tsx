@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import '@mantine/core/styles.css';
 import './globals.css';
 import '@mantine/carousel/styles.css';
@@ -132,6 +133,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-XELJ15SLQL"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XELJ15SLQL');
+          `}
+        </Script>
       </head>
       <body>
         <MantineProvider theme={theme}>
