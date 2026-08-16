@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import { ehealthwaresApi } from '@/lib/api';
+import { clearCaches } from '@/lib/cache';
 import { Hero } from '@/components/sections/Hero';
 import { Categories } from '@/components/sections/Categories';
 import { ProductsGrid } from '@/components/sections/ProductsGrid';
@@ -52,7 +54,17 @@ const websiteJsonLd = {
   },
 };
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams?: { 'clear-cache'?: string };
+}) {
+  const clearScope = searchParams?.['clear-cache'];
+  if (clearScope === 'client' || clearScope === 'server' || clearScope === 'all') {
+    await clearCaches(clearScope);
+    redirect('/');
+  }
+
   let sections = null, products = null, services = null, testimonials = null,
       partners = null, heroSlides = null, categories = null, articles = null,
       investorData = null, careers = null;

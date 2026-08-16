@@ -29,7 +29,8 @@ export async function apiGet<T>(path: string): Promise<T | null> {
 
     const res = await fetch(`${API_BASE}${path}`, { 
       next: {
-        revalidate: CACHE_TTL_SECONDS
+        revalidate: CACHE_TTL_SECONDS,
+        tags: ['ehealthwares']
       }
      });
          console.log('API RESPONSE:', res.status, url);
