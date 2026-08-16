@@ -133,6 +133,9 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-5 text-xs text-white/45">
             <span className="font-medium text-white/55">eHealthWares · Healthier with every step</span>
+            <Link href="/privacy-policy" className="transition-colors hover:text-white">
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </div>
