@@ -17,9 +17,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let dynamicRoutes: MetadataRoute.Sitemap = [];
   try {
-    const [products, services] = await Promise.all([
+    const [products, services, articles, careers] = await Promise.all([
       ehealthwaresApi.getProducts(),
       ehealthwaresApi.getServices(),
+      ehealthwaresApi.getArticles(),
+      ehealthwaresApi.getCareers(),
     ]);
     dynamicRoutes = [
       ...(products ?? []).map((p) => ({
@@ -33,6 +35,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: LAST_MODIFIED,
         changeFrequency: 'monthly' as const,
         priority: 0.7,
+      })),
+      ...(articles ?? []).map((a) => ({
+        url: `${SITE_URL}/articles/${a.slug}`,
+        lastModified: LAST_MODIFIED,
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      })),
+      ...(careers ?? []).map((c) => ({
+        url: `${SITE_URL}/careers/${c.slug}`,
+        lastModified: LAST_MODIFIED,
+        changeFrequency: 'monthly' as const,
+        priority: 0.5,
       })),
     ];
   } catch (e) {
