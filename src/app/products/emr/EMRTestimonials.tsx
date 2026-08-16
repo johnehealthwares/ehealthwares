@@ -13,7 +13,7 @@ const TESTIMONIALS = [
     name: 'Dr. Sarah Okafor',
     role: 'Family Physician',
     img: 'https://i.pravatar.cc/80?img=47',
-    text: 'Documentation used to eat up my evenings. With eHealthwares EMR templates, I finish clinical notes in minutes.',
+    text: 'Documentation used to eat up my evenings. With PrognoCare EMR templates, I finish clinical notes in minutes.',
   },
   {
     name: 'Adebayo Kalu',

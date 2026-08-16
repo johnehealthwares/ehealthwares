@@ -9,7 +9,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ehealthwares.com';
 export const metadata: Metadata = {
   title: 'EMR Software — Electronic Medical Records Platform',
   description:
-    'eHealthwares EMR is a secure electronic medical records platform for hospitals and clinics — patient records, clinical documentation, e-prescriptions, lab & radiology integration, HL7/FHIR interoperability, and billing in one system.',
+    'PrognoCare EMR is a secure electronic medical records platform for hospitals and clinics — patient records, clinical documentation, e-prescriptions, lab & radiology integration, HL7/FHIR interoperability, and billing in one system.',
   alternates: { canonical: '/products/emr' },
   keywords: [
     'EMR software',
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     type: 'website',
     url: `${SITE_URL}/products/emr`,
     siteName: 'eHealthwares',
-    title: 'eHealthwares EMR — Electronic Medical Records Platform',
+    title: 'PrognoCare EMR — Electronic Medical Records Platform',
     description:
       'Patient records, clinical documentation, e-prescriptions, lab & radiology integration, HL7/FHIR interoperability, and billing in one secure EMR platform.',
-    images: [{ url: '/logo-rect.png', width: 512, height: 512, alt: 'eHealthwares EMR' }],
+    images: [{ url: '/logo-rect.png', width: 512, height: 512, alt: 'PrognoCare EMR' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'eHealthwares EMR — Electronic Medical Records Platform',
+    title: 'PrognoCare EMR — Electronic Medical Records Platform',
     description:
       'Patient records, clinical documentation, e-prescriptions, lab & radiology integration, HL7/FHIR interoperability, and billing in one secure EMR platform.',
     images: ['/logo-rect.png'],
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
 
 const FAQ_ITEMS_LEFT = [
   {
-    q: 'What is eHealthwares EMR used for?',
-    a: 'eHealthwares EMR is an electronic medical records platform that helps hospitals and clinics manage patient records, clinical documentation, appointments, e-prescriptions, lab and radiology results, billing, and staff — all in one secure system.',
+    q: 'What is PrognoCare EMR used for?',
+    a: 'PrognoCare EMR is an electronic medical records platform that helps hospitals and clinics manage patient records, clinical documentation, appointments, e-prescriptions, lab and radiology results, billing, and staff — all in one secure system.',
   },
   {
     q: 'Is patient data secure?',
@@ -50,7 +50,7 @@ const FAQ_ITEMS_LEFT = [
   },
   {
     q: 'Does EMR integrate with other healthcare systems?',
-    a: 'Yes. eHealthwares EMR exchanges data with other systems using HL7 messaging and FHIR APIs — connecting labs, pharmacies, radiology (DICOM/PACS), and national health registries.',
+    a: 'Yes. PrognoCare EMR exchanges data with other systems using HL7 messaging and FHIR APIs — connecting labs, pharmacies, radiology (DICOM/PACS), and national health registries.',
   },
   {
     q: 'How does e-prescribing work?',
@@ -68,7 +68,7 @@ const FAQ_ITEMS_LEFT = [
 
 const FAQ_ITEMS_RIGHT = [
   {
-    q: 'Who is eHealthwares EMR designed for?',
+    q: 'Who is PrognoCare EMR designed for?',
     a: 'It is built for hospitals, clinics, specialist practices, and multi-facility healthcare organizations — from small clinics to hospital groups.',
   },
   {
@@ -81,7 +81,7 @@ const FAQ_ITEMS_RIGHT = [
   },
   {
     q: 'Can I access records from any device?',
-    a: 'Yes. eHealthwares EMR works on desktop, tablet, and mobile, and can be installed as a Progressive Web App for fast, offline-capable access at the point of care.',
+    a: 'Yes. PrognoCare EMR works on desktop, tablet, and mobile, and can be installed as a Progressive Web App for fast, offline-capable access at the point of care.',
   },
   {
     q: 'How is billing handled?',
@@ -96,7 +96,7 @@ const FAQ_ITEMS_RIGHT = [
 const SOFTWARE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'eHealthwares EMR',
+  name: 'PrognoCare EMR',
   url: `${SITE_URL}/products/emr`,
   applicationCategory: 'HealthApplication',
   operatingSystem: 'Web',
@@ -157,7 +157,7 @@ export default function EMRPage() {
               <path d="M8 8h8v2H8zm0 4h8v2H8zm0 4h5v2H8z" />
               <path d="M17 7h1v1h-1z" />
             </svg>
-            <span className="logo-name">eHealthwares EMR</span>
+            <span className="logo-name">PrognoCare EMR</span>
           </a>
           <nav className="desk-nav">
             <a href="#about-us">About</a>
@@ -288,12 +288,12 @@ export default function EMRPage() {
             Electronic Medical Records
           </div>
           <h1 className="hero-title">
-            <span className="grad-text">eHealthwares EMR</span> — The Smarter Way
+            <span className="grad-text">PrognoCare EMR</span> — The Smarter Way
             <br />
             to Manage Patient Records
           </h1>
           <p className="hero-sub">
-            eHealthwares EMR brings patient records, clinical documentation, appointments,
+            PrognoCare EMR brings patient records, clinical documentation, appointments,
             e-prescriptions, lab &amp; radiology results, and billing into one secure platform —
             built for modern healthcare providers.
           </p>
@@ -787,7 +787,7 @@ export default function EMRPage() {
           <div className="pricing-cta reveal">
             <div className="pricing-cta-glow" />
             <h3>
-              Curious what eHealthwares EMR costs for <em>your</em> organization?
+              Curious what PrognoCare EMR costs for <em>your</em> organization?
             </h3>
             <p>
               Tell us about your facility and we&apos;ll tailor a plan and price just for you —
@@ -823,7 +823,7 @@ export default function EMRPage() {
               Trusted by <span className="grad-text">Healthcare Professionals</span>
             </h2>
             <p className="sec-sub">
-              Hear from doctors and hospital teams already using eHealthwares EMR every day.
+              Hear from doctors and hospital teams already using PrognoCare EMR every day.
             </p>
           </div>
           <EMRTestimonials />
@@ -847,7 +847,7 @@ export default function EMRPage() {
             <h2 className="sec-title">
               Frequently Asked <span className="grad-text">Questions</span>
             </h2>
-            <p className="sec-sub">Everything you need to know about eHealthwares EMR.</p>
+            <p className="sec-sub">Everything you need to know about PrognoCare EMR.</p>
           </div>
           <EMRFaq items={[...FAQ_ITEMS_LEFT, ...FAQ_ITEMS_RIGHT]} />
         </div>
@@ -879,7 +879,7 @@ export default function EMRPage() {
               <h3>Let&apos;s Talk</h3>
               <p className="contact-desc">
                 For any inquiries, please feel free to reach out. We&apos;re here to help you set
-                up eHealthwares EMR for your organization.
+                up PrognoCare EMR for your organization.
               </p>
               <div className="contact-details">
                 <div className="info-item">
@@ -925,7 +925,7 @@ export default function EMRPage() {
                 <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 14H4V6h16v12z" />
                 <path d="M8 8h8v2H8zm0 4h8v2H8zm0 4h5v2H8z" />
               </svg>
-              <span className="footer-logo-name">eHealthwares EMR</span>
+              <span className="footer-logo-name">PrognoCare EMR</span>
             </div>
             <p>Making healthcare management smarter, faster, and more human.</p>
           </div>
