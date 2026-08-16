@@ -14,6 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/careers`, lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 0.6 },
     { url: `${SITE_URL}/partnerships`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE_URL}/privacy-policy`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${SITE_URL}/terms-of-service`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${SITE_URL}/data-deletion`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.3 },
   ];
 
   let dynamicRoutes: MetadataRoute.Sitemap = [];
