@@ -109,6 +109,9 @@ export const metadata: Metadata = {
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },
+  other: {
+    'facebook-domain-verification': 'm8nohev3w3t82o2twlqiluaprsv3y2',
+  },
 };
 
 const organizationJsonLd = {
