@@ -129,7 +129,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
           <p className="text-xs text-white/45">
-            &copy; {new Date().getFullYear()} eHealthwares. All rights reserved.
+            &copy; {new Date().getFullYear()} eHealthwares Informatics Limited. All rights reserved.
           </p>
           <div className="flex items-center gap-5 text-xs text-white/45">
             <span className="font-medium text-white/55">eHealthWares · Healthier with every step</span>

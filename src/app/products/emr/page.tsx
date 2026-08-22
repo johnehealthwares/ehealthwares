@@ -989,7 +989,7 @@ export default function EMRPage() {
         </div>
         <div className="container">
           <div className="copyright">
-            <p>Copyright © {new Date().getFullYear()} eHealthwares. All rights reserved.</p>
+            <p>Copyright © {new Date().getFullYear()} eHealthwares Informatics. All rights reserved.</p>
             <div className="legal-links">
               <a href="/about">About</a>
               <a href="/contact">Contact</a>
