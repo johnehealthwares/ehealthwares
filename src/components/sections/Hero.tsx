@@ -79,7 +79,7 @@ export function Hero({ slides, interval = 6000 }: HeroProps) {
                   <div className="max-w-2xl">
                     <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-white/90 backdrop-blur-md">
                       <IconSparkles size={13} className="text-amber-300" />
-                      eHealthWares Ecosystem
+                      eHealthWares Informatics Limited
                     </span>
 
                     {slide.title && (
